@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
 
 function MainPage() {
   return (
-    <div>
-      <h1>MainPage</h1>
+    <div className="MainPage">
+      <div className="PostContainer">
+        <div className="post">
+          <h1>Title</h1>
+          <p>Description</p>
+          <h4>Username</h4>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "../Style/App.css";
-import Axios from "axios";
+import Axios from 'axios'
 function CreatePost() {
   const [userName, setUserName] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
   const submitPost = () => {
-    Axios.post("https://mysql-deploy-heroku.herokuapp.com/api/create", {
+    Axios.post("http://localhost:3002/api/create", {
       userName: userName,
       title: title,
       text: text,
