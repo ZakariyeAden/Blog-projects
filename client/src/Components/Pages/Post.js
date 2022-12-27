@@ -5,11 +5,11 @@ function Post() {
 
   let {postId} = useParams();
 
-  useEffect(() => {
-    Axios.get()
+  // useEffect(() => {
+  //   Axios.get()
   
   
-  }, [])
+  // }, [])
   
   return (
     <div>
