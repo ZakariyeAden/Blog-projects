@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import "../Style/App.css";
-import Axios from 'axios'
+import Axios from "axios";
 function CreatePost() {
   const [userName, setUserName] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
+  const data = {
+    userName: userName,
+    title: title,
+    text: text
+  }
+
   const submitPost = () => {
-    Axios.post("http://localhost:3002/api/create", {
-      userName: userName,
-      title: title,
-      text: text,
-    });
+    console.log("works");
+    console.log(data);
+    Axios.post("http://localhost:3002/api/create", data);
+
   };
+
   return (
     <div className="CreatePost">
       <div className="uploadPost">
