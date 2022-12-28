@@ -13,11 +13,11 @@ function App() {
           <a href="/createpost">Create Post</a>
         </div>
       </div>
-
+      {/* postId */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/createpost" element={<CreatePost />} />
-        <Route path="/post:postId" element={<Post />} />
+        <Route path="/post/:postId" element={<Post />} />
       </Routes>
     </>
   );
