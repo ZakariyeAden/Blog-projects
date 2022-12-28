@@ -87,7 +87,7 @@ button {
   width: 50%;
   max-width: 50%;
   padding: 30px;
-  margin-top: 150rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -102,4 +102,6 @@ button {
   flex-direction: column;
   align-items: center;
 }
-
+.Post:hover{
+  cursor: pointer;
+}
