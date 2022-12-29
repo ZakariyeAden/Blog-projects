@@ -18,8 +18,8 @@ function Post() {
   }, []);
 
   return (
-    <div>
-      <div className="Post">
+    <div className="center">
+      <div className="Post SinglePage">
         <h1>{post.title}</h1>
         <p>
           {post.postText}

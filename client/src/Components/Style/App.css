@@ -105,3 +105,18 @@ button {
 .Post:hover{
   cursor: pointer;
 }
+.center{
+  display: flex;
+  justify-content: center;
+}
+.SinglePage{
+  width: 60%;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom h4 {
+  margin: 5px;
+}

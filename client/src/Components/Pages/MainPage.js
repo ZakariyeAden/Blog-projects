@@ -17,6 +17,16 @@ function MainPage() {
       });
   }, []);
 
+  const likedPost = id => {
+    Axios.get(`http://localhost:3002/api/like/${id}`).then(response => {
+      alert("You liked a post");
+    });
+  };
+  const deletedPost = id => {
+    Axios.get(`http://localhost:3002/api/delete/${id}`).then(response => {
+      alert("You Deleted");
+    });
+  };
   return (
     <div className="MainPage">
       <div className="PostContainer">
@@ -29,13 +39,33 @@ function MainPage() {
                 naviagate(`/post/${val.id}`);
               }}
             >
-              <h1>{val.title}</h1>
+            <div>
+              <h1>Title: {val.title}</h1>
               <p>
-                {val.post_text.length > 500
+                Text: {val.post_text.length > 500
                   ? val.post_text.substring(0, 500) + "..."
                   : val.post_text}
               </p>
-              <h4>{val.user_name}</h4>
+            </div>
+              <button className="liked btn"
+                onClick={() => {
+                  likedPost(val.id);
+                  
+                }}
+              >
+                Like
+              </button>
+              <div className="bottom">
+                  <h4> {val.user_name}:</h4>
+                  <h4> {val.likes}</h4>
+                </div>
+             <button className="delete btn"
+                onClick={() => {
+                  deletedPost(val.id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           );
         })}
