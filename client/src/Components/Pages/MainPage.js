@@ -39,27 +39,28 @@ function MainPage() {
                 naviagate(`/post/${val.id}`);
               }}
             >
-            <div>
               <h1>Title: {val.title}</h1>
               <p>
-                Text: {val.post_text.length > 500
+                Text:{" "}
+                {val.post_text.length > 500
                   ? val.post_text.substring(0, 500) + "..."
                   : val.post_text}
               </p>
-            </div>
-              <button className="liked btn"
+
+              <button
+                className="liked btn"
                 onClick={() => {
                   likedPost(val.id);
-                  
                 }}
               >
                 Like
               </button>
               <div className="bottom">
-                  <h4> {val.user_name}:</h4>
-                  <h4> {val.likes}</h4>
-                </div>
-             <button className="delete btn"
+                <h4> {val.user_name}:</h4>
+                <h4> {val.likes}</h4>
+              </div>
+              <button
+                className="delete btn"
                 onClick={() => {
                   deletedPost(val.id);
                 }}
