@@ -7,9 +7,6 @@ const db = mysql.createConnection({
   user:"bc9883e28ab581",
   password:"1dbc30b0",
   database:"heroku_08509d0775b4d6f",
-  ssl:{
-    rejectUnauthorized:false,
-  },
 })
 
 module.exports = db
