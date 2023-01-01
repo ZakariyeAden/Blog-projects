@@ -16,12 +16,6 @@ app.use((req, res, next) => {
 
   db.query(
     "INSERT INTO posts (title, post_text, user_name) VALUES ('title','text','abdi')",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(result);
-    }
   );
 
 // app.get('/api/get', (req, res) => {
