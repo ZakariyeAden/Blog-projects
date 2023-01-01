@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
 const db = require("./config/db");
-require("dotenv").config();
+
 const cors = require("cors");
-const PORT = process.env.PORT || 3002;
-app.use(cors( origin="https://zippy-valkyrie-5048e6.netlify.app/"));
+
+app.use(cors());
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("works");
@@ -91,9 +96,9 @@ app.post("/api/create", (req, res) => {
   );
 });
 
-
+const PORT = process.env.PORT || 3002;
 // It has to be different then the localhost and from same the http
-// app.listen(PORT, () => {
-//   console.log(`Server listening on port ${PORT}`);
-// });
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+// app.listen(PORT);
