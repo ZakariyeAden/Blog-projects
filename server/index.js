@@ -120,21 +120,7 @@ app.get("/api/getFromId/:id", (req, res) => {
       res.send(result);
     });
   });
-// app.get('/api/create', (req, res) => {
-//   const username = req.body.userName;
-//     const title = req.body.title;
-//     const text = req.body.text;
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/create' },
-//     db.query("INSERT INTO posts (title, post_text, user_name) VALUES (?,?,?)",[title, text, username],(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-      
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
+
 app.post("/api/create", (req, res) => {
 
     const username = req.body.userName;
