@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Style/App.css";
-import Axios from "axios";
+import axios from "axios";
 function CreatePost() {
   const [userName, setUserName] = useState("");
   const [title, setTitle] = useState("");
@@ -15,7 +15,7 @@ function CreatePost() {
   const submitPost = () => {
     console.log("works");
     console.log(data);
-    Axios.post("https://blogs.herokuapp.com/api/create", data);
+    axios.post("https://blogs.herokuapp.com/api/create", data);
   };
 
   return (
