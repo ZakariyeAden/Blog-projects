@@ -9,22 +9,22 @@ app.use(express.json());
 
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://zippy-valkyrie-5048e6.netlify.app/');
+  res.header('Access-Control-Allow-Origin' ,'https://zippy-valkyrie-5048e6.netlify.app/');
   next();
 });
 
-// app.get('/', (req, res) => {
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
+app.get('/', (req, res) => {
+  request(
+    { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
 
-//       res.json(JSON.parse(body));
-//     }
-//   )
-// });
+      res.json(JSON.parse(body));
+    }
+  )
+});
 // app.get('/api/get', (req, res) => {
 //   request(
 //     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/get' },
