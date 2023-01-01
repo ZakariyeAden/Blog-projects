@@ -13,18 +13,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) => {
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
 
-//       res.json(JSON.parse(body));
-//     }
-//   )
-// });
+  db.query(
+    "INSERT INTO posts (title, post_text, user_name) VALUES ('title','text','abdi')",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+    }
+  );
+
 // app.get('/api/get', (req, res) => {
 //   request(
 //     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/get' },
@@ -135,6 +134,24 @@ app.get("/api/getFromId/:id", (req, res) => {
   //     })
   //   )
   // });
+app.post("/api/create", (req, res) => {
+
+    const username = req.body.userName;
+    const title = req.body.title;
+    const text = req.body.text;
+  
+    db.query(
+      "INSERT INTO posts (title, post_text, user_name) VALUES (?,?,?)",
+      [title, text, username],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      }
+    );
+  // Have to parse the data first in order to worl
+});
 app.post("/api/create", (req, res) => {
 
     const username = req.body.userName;
