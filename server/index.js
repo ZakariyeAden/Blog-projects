@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin' ,'https://zippy-valkyrie-5048e6.netlify.app/');
+  res.header('Access-Control-Allow-Origin' ,'*');
   next();
 });
 
