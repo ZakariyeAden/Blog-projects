@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
+    { url: 'https://blogs.herokuapp.com/' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 app.get('/api/get', (req, res) => {
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/get' },
+    { url: 'https://blogs.herokuapp.com/api/get' },
     db.query("SELECT * FROM posts",(error, response, body, result) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
@@ -49,7 +49,7 @@ app.get('/api/get', (req, res) => {
 app.get('/api/delete/:id', (req, res) => {
   const id = req.params.id;
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/delete/:id' },
+    { url: 'https://blogs.herokuapp.com/api/delete/:id' },
     db.query("DELETE FROM posts WHERE id = ?",id,(error, response, body, result) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
@@ -72,7 +72,7 @@ app.get('/api/delete/:id', (req, res) => {
 app.get('/api/like/:id', (req, res) => {
   const id = req.params.id;
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/like/:id' },
+    { url: 'https://blogs.herokuapp.com/api/like/:id' },
     db.query("UPDATE posts SET likes = likes + 1 WHERE id = ?",id,(error, response, body, result) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
@@ -100,7 +100,7 @@ app.get('/api/like/:id', (req, res) => {
 app.get('/api/getFromId/:id', (req, res) => {
   const id = req.params.id;
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/getFromId/:id' },
+    { url: 'https://blogs.herokuapp.com/api/getFromId/:id' },
     db.query("SELECT * FROM posts WHERE id = ?",id,(error, response, body, result) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
@@ -125,7 +125,7 @@ app.get('/api/create', (req, res) => {
     const title = req.body.title;
     const text = req.body.text;
   request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/create' },
+    { url: 'https://blogs.herokuapp.com/api/create' },
     db.query("INSERT INTO posts (title, post_text, user_name) VALUES (?,?,?)",[title, text, username],(error, response, body, result) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
