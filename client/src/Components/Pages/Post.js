@@ -5,8 +5,9 @@ import Axios from "axios";
 function Post() {
   let { postId } = useParams();
   const [post, setPost] = useState({});
+  const [newTitle, setNewTitle] = useState("");
   useEffect(() => {
-    Axios.get(`http://localhost:3002/api/getFromId/${postId}`).then(data => {
+    Axios.get(`https://blogs.herokuapp.com/api/getFromId/${postId}`).then(data => {
       console.log(data.data.post_text);
       setPost({
         title: data.data[0].title,
@@ -14,18 +15,33 @@ function Post() {
         userName: data.data[0].user_name,
         
       });
+    }).then((error) => {
+      console.log(error);
     });
   }, []);
-
+ 
   return (
+    <div>
     <div className="center">
       <div className="Post SinglePage">
+      
         <h1>{post.title}</h1>
         <p>
           {post.postText}
         </p>
         <h4>{post.userName}</h4>
+      
       </div>
+    </div>
+{/* UPDATE Side  */}
+      {/* <div className="d-flex">
+      <label>Title</label>
+        <input
+          type="text"
+        
+        />
+
+      </div> */}
     </div>
   );
 }

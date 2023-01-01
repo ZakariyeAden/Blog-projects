@@ -7,7 +7,7 @@ function MainPage() {
   let naviagate = useNavigate();
 
   useEffect(() => {
-    Axios.get("http://localhost:3002/api/get")
+    Axios.get("https://blogs.herokuapp.com/api/get")
       .then(data => {
         setPostList(data.data);
         console.log(data.data);
@@ -18,13 +18,15 @@ function MainPage() {
   }, []);
 
   const likedPost = id => {
-    Axios.get(`http://localhost:3002/api/like/${id}`).then(response => {
+    Axios.get(`https://blogs.herokuapp.com/api/like/${id}`).then(response => {
       alert("You liked a post");
     });
   };
   const deletedPost = id => {
-    Axios.get(`http://localhost:3002/api/delete/${id}`).then(response => {
+    Axios.get(`https://blogs.herokuapp.com/api/delete/${id}`).then(response => {
       alert("You Deleted");
+    }).then((error) => {
+      console.log(error)
     });
   };
   return (
