@@ -15,7 +15,7 @@ function CreatePost() {
   const submitPost = () => {
     console.log("works");
     console.log(data);
-    axios.post("https://blogs.herokuapp.com/api/create", data);
+    Axios.post("https://blogs.herokuapp.com/api/create", data);
   };
 
   return (

@@ -13,23 +13,20 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) => {
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
+app.get('/', (req, res) => {
+  request(
+    { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
 
-//       res.json(JSON.parse(body));
-//     }
-//   )
-// });
+      res.json(JSON.parse(body));
+    }
+  )
+});
 
 app.get("/api/get", (req, res) => {
-  request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/get' }, 
-    )
   db.query("SELECT * FROM posts", (err, result) => {
     if (err) {
       console.log(err);
@@ -38,9 +35,6 @@ app.get("/api/get", (req, res) => {
   });
 });
 app.get("/api/delete/:id", (req, res) => {
-  request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/delete/:id' }, 
-    )
     const id = req.params.id;
     db.query("DELETE FROM posts WHERE id = ?",id, (err, result) => {
       if (err) {
@@ -65,9 +59,7 @@ app.get("/api/delete/:id", (req, res) => {
 //   );
 // });
 app.get("/api/like/:id", (req, res) => {
-  request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/like/:id' }, 
-    )
+
   const id = req.params.id;
   db.query(
     "UPDATE posts SET likes = likes + 1 WHERE id = ?",
@@ -81,23 +73,10 @@ app.get("/api/like/:id", (req, res) => {
   );
 });
 
-app.get('/jokes/random', (req, res) => {
-  request(
-    { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
 
-      res.json(JSON.parse(body));
-    }
-  )
-});
 app.get("/api/getFromId/:id", (req, res) => {
   const id = req.params.id;
-  request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/getFromId/:id' },
-    )
+
     db.query("SELECT * FROM posts WHERE id = ?", id, (err, result) => {
       if (err) {
         console.log(err);
@@ -107,9 +86,7 @@ app.get("/api/getFromId/:id", (req, res) => {
   });
 
 app.post("/api/create", (req, res) => {
-  request(
-    { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/create' }, 
-    )
+
     const username = req.body.userName;
     const title = req.body.title;
     const text = req.body.text;
