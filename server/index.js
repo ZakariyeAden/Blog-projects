@@ -4,7 +4,7 @@ const db = require("./config/db");
 
 const cors = require("cors");
 
-app.use(cors());
+(app.use(cors()));
 app.use(express.json());
 
 
@@ -13,21 +13,11 @@ app.use(express.json());
 //   next();
 // });
 
-app.post("/api/create", (req, res) => {
-  db.query(
-    "INSERT INTO posts (title, post_text, user_name) VALUES ('title','text','abdi')",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(result);
-    }
-  );
+
+
 // Have to parse the data first in order to worl
-});
-  db.query(
-    "INSERT INTO posts (title, post_text, user_name) VALUES ('title','text','abdi')",
-  );
+
+
 
 // app.get('/api/get', (req, res) => {
 //   request(
