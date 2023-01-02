@@ -4,16 +4,29 @@ const db = require("./config/db");
 
 const cors = require("cors");
 
+
+// app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 (app.use(cors()));
 app.use(express.json());
 
-
+// db.query("INSERT INTO posts (title, post_text, user_name) VALUES ('newtitle','text','aaaa')");
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin' ,'*');
 //   next();
 // });
 
-
+// app.get('/', (req, res) => {
+//   request(
+//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
+//     db.query("SELECT * FROM posts",(error, response, body, result) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: 'error', message: err.message });
+//       }
+      
+//       res.json(JSON.parse(body));
+//     })
+//   )
+// });
 
 // Have to parse the data first in order to worl
 
