@@ -180,8 +180,9 @@ app.post("/api/create", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
+
 // It has to be different then the localhost and from same the http
 // app.listen(PORT, () => {
 //   console.log(`Server listening on port ${PORT}`);
 // });
-app.listen(PORT);
+app.listen(PORT, () => {console.log(`APP listening on ${PORT}`)});

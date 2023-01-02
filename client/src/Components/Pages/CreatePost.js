@@ -18,6 +18,8 @@ function CreatePost() {
   const submitPost = () => {
     console.log("works");
     console.log(data);
+
+  
     Axios.post("https://blogs.herokuapp.com/api/create", data).then((error) => {
       console.log(error)
     })
