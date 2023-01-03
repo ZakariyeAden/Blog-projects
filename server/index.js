@@ -5,51 +5,23 @@ const db = require("./config/db");
 const cors = require("cors");
 
 
-// app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+
 (app.use(cors()));
 app.use(express.json());
 
 console.log('hello')
 
-// db.query("INSERT INTO posts (title, post_text, user_name) VALUES ('newtitle','text','aaaa')");
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin' ,'*');
-//   next();
-// });
+const http = require("http");
+setInterval(() => {
+    http.get("https://salty-beach-75633.herokuapp.com/");
+}, 25 * 60 * 1000); 
 
-// app.get('/', (req, res) => {
-//   res.send("Hello")
-// })
-
-// app.get('/', (req, res) => {
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/' },
-//     db.query("SELECT * FROM posts",(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-      
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
 
 // Have to parse the data first in order to worl
 
 
 
-// app.get('/api/get', (req, res) => {
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/get' },
-//     db.query("SELECT * FROM posts",(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-      
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
+
 app.get("/api/get", (req, res) => {
   db.query("SELECT * FROM posts", (err, result) => {
     if (err) {
@@ -59,19 +31,7 @@ app.get("/api/get", (req, res) => {
   });
 });
 
-// app.get('/api/delete/:id', (req, res) => {
-//   const id = req.params.id;
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/delete/:id' },
-//     db.query("DELETE FROM posts WHERE id = ?",id,(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-      
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
+
 app.get("/api/delete/:id", (req, res) => {
     const id = req.params.id;
     db.query("DELETE FROM posts WHERE id = ?",id, (err, result) => {
@@ -82,19 +42,7 @@ app.get("/api/delete/:id", (req, res) => {
     });
 });
 
-// app.get('/api/like/:id', (req, res) => {
-//   const id = req.params.id;
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/like/:id' },
-//     db.query("UPDATE posts SET likes = likes + 1 WHERE id = ?",id,(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-      
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
+
 app.get("/api/like/:id", (req, res) => {
 
   const id = req.params.id;
@@ -121,21 +69,7 @@ app.get("/api/getFromId/:id", (req, res) => {
       res.send(result);
     });
   });
-  // app.get('/api/create', (req, res) => {
-  //   const username = req.body.userName;
-  //   const title = req.body.title;
-  //   const text = req.body.text;
-  //   request(
-  //     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/create' },
-  //     db.query("INSERT INTO posts (title, post_text, user_name) VALUES (?,?,?)",[title, text, username],(error, response, body, result) => {
-  //       if (error || response.statusCode !== 200) {
-  //         return res.status(500).json({ type: 'error', message: err.message });
-  //       }
-       
-  //       res.json(JSON.parse(body));
-  //     })
-  //   )
-  // });
+  
 app.post("/api/create", (req, res) => {
   
   console.log('/api/create')
@@ -177,10 +111,7 @@ app.post("/api/create", (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 
-// It has to be different then the localhost and from same the http
-// app.listen(PORT, () => {
-//   console.log(`Server listening on port ${PORT}`);
-// });
+
 app.listen(PORT, () => {console.log(`APP listening on ${PORT}`)});
 
 
