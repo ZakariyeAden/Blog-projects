@@ -7,7 +7,7 @@ function MainPage() {
   let naviagate = useNavigate();
 
   useEffect(() => {
-    Axios.get("https://blogs.herokuapp.com/api/get")
+    Axios.get("https://salty-beach-75633.herokuapp.com/api/get")
       .then(data => {
         setPostList(data.data);
         console.log(data.data);
@@ -18,12 +18,12 @@ function MainPage() {
   }, []);
 
   const likedPost = id => {
-    Axios.get(`https://blogs.herokuapp.com/api/like/${id}`).then(response => {
+    Axios.get(`https://salty-beach-75633.herokuapp.com/api/like/${id}`).then(response => {
       alert("You liked a post");
     });
   };
   const deletedPost = id => {
-    Axios.get(`https://blogs.herokuapp.com/api/delete/${id}`).then(response => {
+    Axios.get(`https://salty-beach-75633.herokuapp.com/api/delete/${id}`).then(response => {
       alert("You Deleted");
     }).then((error) => {
       console.log(error)

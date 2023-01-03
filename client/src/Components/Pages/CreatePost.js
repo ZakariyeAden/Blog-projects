@@ -20,7 +20,7 @@ function CreatePost() {
     console.log(data);
 
   
-    Axios.post("https://blogs.herokuapp.com/api/create", data).then((error) => {
+    Axios.post("https://salty-beach-75633.herokuapp.com/api/create", data).then((error) => {
       console.log(error)
     })
   };

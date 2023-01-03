@@ -7,7 +7,7 @@ function Post() {
   const [post, setPost] = useState({});
   const [newTitle, setNewTitle] = useState("");
   useEffect(() => {
-    Axios.get(`https://blogs.herokuapp.com/api/getFromId/${postId}`).then(data => {
+    Axios.get(`https://salty-beach-75633.herokuapp.com/api/getFromId/${postId}`).then(data => {
       console.log(data.data.post_text);
       setPost({
         title: data.data[0].title,

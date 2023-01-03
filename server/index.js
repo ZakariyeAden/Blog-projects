@@ -9,11 +9,17 @@ const cors = require("cors");
 (app.use(cors()));
 app.use(express.json());
 
+console.log('hello')
+
 // db.query("INSERT INTO posts (title, post_text, user_name) VALUES ('newtitle','text','aaaa')");
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin' ,'*');
 //   next();
 // });
+
+// app.get('/', (req, res) => {
+//   res.send("Hello")
+// })
 
 // app.get('/', (req, res) => {
 //   request(
@@ -104,19 +110,7 @@ app.get("/api/like/:id", (req, res) => {
   );
 });
 
-// app.get('/api/getFromId/:id', (req, res) => {
-//   const id = req.params.id;
-//   request(
-//     { url: 'https://zippy-valkyrie-5048e6.netlify.app/api/getFromId/:id' },
-//     db.query("SELECT * FROM posts WHERE id = ?",id,(error, response, body, result) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
-     
-//       res.json(JSON.parse(body));
-//     })
-//   )
-// });
+
 app.get("/api/getFromId/:id", (req, res) => {
   const id = req.params.id;
 
@@ -143,6 +137,8 @@ app.get("/api/getFromId/:id", (req, res) => {
   //   )
   // });
 app.post("/api/create", (req, res) => {
+  
+  console.log('/api/create')
 
     const username = req.body.userName;
     const title = req.body.title;
@@ -186,3 +182,6 @@ const PORT = process.env.PORT || 3001;
 //   console.log(`Server listening on port ${PORT}`);
 // });
 app.listen(PORT, () => {console.log(`APP listening on ${PORT}`)});
+
+
+ // "devStart": "nodemon index.js",
